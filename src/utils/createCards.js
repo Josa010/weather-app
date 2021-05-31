@@ -1,6 +1,4 @@
 const createCards = (result) => {
-	const imgSrc = `http://openweathermap.org/img/wn/${result.weather[0].icon}@2x.png`;
-
 	const card = document.createElement('div');
 	card.classList.add('card');
 
@@ -22,11 +20,6 @@ const createCards = (result) => {
 
 	const degreesSymbol = document.createElement('span');
 	degreesSymbol.textContent = '°C';
-
-	const img = document.createElement('img');
-	img.classList.add('weather-img');
-	img.src = imgSrc;
-	img.alt = result.weather[0].description;
 
 	const description = document.createElement('p');
 	description.classList.add('weather-description');

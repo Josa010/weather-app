@@ -27,7 +27,6 @@ form.addEventListener('submit', () => {
 const processData = async (city) => {
 	const data = await getData(city);
 	const cityExist = verifyIfCityAlreadyExist(data);
-	console.log(cityExist);
 
 	if (data.message === 'city not found' || cityExist) {
 		cityExist ? renderError('cityError') : renderError();
@@ -42,17 +41,8 @@ const verifyIfCityAlreadyExist = (data) => {
 		const NodeListOfCitys = document.querySelectorAll('.city');
 		const listOfCitys = [...NodeListOfCitys];
 
-		const cityExist = listOfCitys.map((city) => {
-			if (city.innerHTML === data.name) {
-				return true;
-			} else {
-				return false;
-			}
-		});
-
-		const isTrue = (element) => element == true;
-		const trueIndex = cityExist.findIndex(isTrue);
-		return cityExist[trueIndex];
+		const test = listOfCitys.find((city) => city.innerHTML === data.name);
+		return test;
 	} else {
 		return undefined;
 	}
